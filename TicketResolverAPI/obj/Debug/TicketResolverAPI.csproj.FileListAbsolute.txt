@@ -75,3 +75,8 @@ D:\Angular-TicketResolver\TicketResolverAPI\TicketResolverAPI\bin\System.Web.Htt
 D:\Angular-TicketResolver\TicketResolverAPI\TicketResolverAPI\obj\Debug\TicketResolverAPI.csprojResolveAssemblyReference.cache
 D:\Angular-TicketResolver\TicketResolverAPI\TicketResolverAPI\obj\Debug\TicketResolverAPI.dll
 D:\Angular-TicketResolver\TicketResolverAPI\TicketResolverAPI\obj\Debug\TicketResolverAPI.pdb
+D:\Angular-TicketResolver\TicketResolverAPI\TicketResolverAPI\bin\TicketResolverAPI_DAL.dll
+D:\Angular-TicketResolver\TicketResolverAPI\TicketResolverAPI\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll
+D:\Angular-TicketResolver\TicketResolverAPI\TicketResolverAPI\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\Angular-TicketResolver\TicketResolverAPI\TicketResolverAPI\bin\Microsoft.Practices.ObjectBuilder2.dll
+D:\Angular-TicketResolver\TicketResolverAPI\TicketResolverAPI\bin\TicketResolverAPI_DAL.pdb

@@ -25,6 +25,12 @@ namespace TicketResolverAPI
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver =
+                new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver();
+
+            config.Formatters.JsonFormatter.SerializerSettings.DateTimeZoneHandling =
+                Newtonsoft.Json.DateTimeZoneHandling.Utc;
         }
     }
 }
