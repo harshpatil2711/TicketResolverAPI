@@ -49,7 +49,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\TicketDAL.cs" />
+    <Compile Include="DAL\MasterDAL.cs" />
     <Compile Include="Models\Ticket.cs" />
+    <Compile Include="Models\MasterModels.cs" />
+    
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\TicketViewModels.cs" />
   </ItemGroup>

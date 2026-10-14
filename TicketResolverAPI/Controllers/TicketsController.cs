@@ -12,6 +12,7 @@ namespace TicketResolverAPI.Controllers
     public class TicketsController : ApiController
     {
         private readonly TicketDAL ticketDAL = new TicketDAL();
+        private readonly MasterDAL masterDAL = new MasterDAL();
 
         [HttpPost]
         [Route("list")]
@@ -42,13 +43,20 @@ namespace TicketResolverAPI.Controllers
                     CreatedDate = Convert.ToDateTime(r["CreatedDate"])
                 }).ToList();
 
+                model.Categories = masterDAL.GetCategories();
+                model.Priorities = masterDAL.GetPriorities();
+                model.Statuses = masterDAL.GetStatuses();
+
                 return Ok(new
                 {
                     items = model.Results,
                     totalCount = model.TotalCount,
                     page = model.PageNumber,
                     size = model.PageSize,
-                    totalPages = model.PageSize <= 0 ? 0 : (int)Math.Ceiling(model.TotalCount / (double)model.PageSize)
+                    totalPages = model.PageSize <= 0 ? 0 : (int)Math.Ceiling(model.TotalCount / (double)model.PageSize),
+                    categories = model.Categories,
+                    priorities = model.Priorities,
+                    statuses = model.Statuses
                 });
             }
             catch (Exception)

@@ -29,6 +29,9 @@ namespace TicketResolverAPI_DAL.ViewModels
         public string SortDirection { get; set; } = "DESC";
         public bool? IsUnassigned { get; set; }
         public List<TicketListItemViewModel> Results { get; set; }
+        public List<TicketResolverAPI_DAL.Models.TicketCategory> Categories { get; set; }
+        public List<TicketResolverAPI_DAL.Models.TicketPriority> Priorities { get; set; }
+        public List<TicketResolverAPI_DAL.Models.TicketStatus> Statuses { get; set; }
     }
 
     public class TicketListItemViewModel
