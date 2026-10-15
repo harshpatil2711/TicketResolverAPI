@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Data;
 using System.Linq;
 using System.Net;
@@ -62,6 +62,59 @@ namespace TicketResolverAPI.Controllers
             catch (Exception)
             {
                 return Content(HttpStatusCode.InternalServerError, new { message = "Failed to load tickets." });
+            }
+        }
+
+        [HttpGet]
+        [Route("{id:int}")]
+        public IHttpActionResult GetById(int id)
+        {
+            try
+            {
+                var detail = ticketDAL.GetById(id);
+                if (detail == null)
+                    return Content(HttpStatusCode.NotFound, new { message = "Ticket not found." });
+
+                return Ok(new
+                {
+                    ticket = detail,
+                    categories = masterDAL.GetCategories(),
+                    priorities = masterDAL.GetPriorities()
+                });
+            }
+            catch (Exception)
+            {
+                return Content(HttpStatusCode.InternalServerError, new { message = "Failed to load ticket." });
+            }
+        }
+
+        [HttpPost]
+        [Route("update")]
+        public IHttpActionResult Update([FromBody] TicketEditViewModel request)
+        {
+            if (request == null || request.TicketId <= 0)
+                return Content(HttpStatusCode.BadRequest, new { message = "Invalid request body." });
+
+            if (string.IsNullOrWhiteSpace(request.Subject))
+                return Content(HttpStatusCode.BadRequest, new { message = "Subject is required." });
+
+            if (string.IsNullOrWhiteSpace(request.Description))
+                return Content(HttpStatusCode.BadRequest, new { message = "Description is required." });
+
+            if (request.CategoryId <= 0)
+                return Content(HttpStatusCode.BadRequest, new { message = "Category is required." });
+
+            if (request.PriorityId <= 0)
+                return Content(HttpStatusCode.BadRequest, new { message = "Priority is required." });
+
+            try
+            {
+                var affected = ticketDAL.Update(request);
+                return Ok(new { affectedRows = affected, success = affected > 0 });
+            }
+            catch (Exception)
+            {
+                return Content(HttpStatusCode.InternalServerError, new { message = "Failed to update ticket." });
             }
         }
 

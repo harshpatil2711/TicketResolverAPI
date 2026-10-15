@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace TicketResolverAPI_DAL.ViewModels
@@ -45,5 +45,37 @@ namespace TicketResolverAPI_DAL.ViewModels
         public string CreatedByName { get; set; }
         public string AssignedToName { get; set; }
         public DateTime CreatedDate { get; set; }
+    }
+
+    public class TicketDetailViewModel
+    {
+        public int TicketId { get; set; }
+        public string TicketNumber { get; set; }
+        public string Subject { get; set; }
+        public string Description { get; set; }
+        public int CategoryId { get; set; }
+        public string CategoryName { get; set; }
+        public int PriorityId { get; set; }
+        public string PriorityName { get; set; }
+        public int StatusId { get; set; }
+        public string StatusName { get; set; }
+        public bool IsTerminalState { get; set; }
+        public int CreatedBy { get; set; }
+        public string CreatedByName { get; set; }
+        public int? AssignedTo { get; set; }
+        public string AssignedToName { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public DateTime? ResolvedDate { get; set; }
+        public DateTime? ClosedDate { get; set; }
+    }
+
+    public class TicketEditViewModel
+    {
+        public int TicketId { get; set; }
+        public string Subject { get; set; }
+        public string Description { get; set; }
+        public int CategoryId { get; set; }
+        public int PriorityId { get; set; }
+        public int? ModifiedBy { get; set; }
     }
 }
